@@ -23,7 +23,6 @@ if SERVER then
 	
 		victim.LastLimbHit = hitgroup
 		
-		return dmginfo
 	end
 	hook.Add("ScalePlayerDamage","UT Damage",UTCheckDamage)
 
@@ -346,7 +345,7 @@ if CLIENT then
 		local KTText = ""
 		local KTAlpha
 		local KTEnt = LocalPlayer():GetNWEntity("KTEnt",LocalPlayer())
-		local KTEnt2 = LocalPlayer():GetNWEntity("KTEnt2",Entity(0))
+		local KTEnt2 = LocalPlayer():GetNWEntity("KTEnt2",LocalPlayer())
 
 		if KTEnt == LocalPlayer() or KTEnt2 == LocalPlayer() then
 		
@@ -355,11 +354,20 @@ if CLIENT then
 			if KTEnt == LocalPlayer() then -- You Killed Someone
 				KTR = 0
 				KTB = 255
-				KTText = "You killed " .. KTEnt2:Nick()
+				
+				if KTEnt2:IsValid() then
+					KTText = "You killed " .. KTEnt2:Nick()
+				else
+					KTText = "Who"
+				end
+					
 			elseif KTEnt2 == LocalPlayer() then -- You Died"
 				KTR = 255
 				KTB = 0
-				KTText = "You were killed by " .. KTEnt:Nick() .. "!!!"
+				
+				if KTEnt:IsValid() then
+					KTText = "You were killed by " .. KTEnt:Nick() .. "!!!"
+				end
 			end
 			
 		end
