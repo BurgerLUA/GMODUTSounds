@@ -161,6 +161,10 @@ if SERVER then
 
 			attacker:SendLua([[LocalPlayer():EmitSound("ut/headshot.wav")]])
 			
+			if math.Rand(1,100) > 70 then
+				attacker:SendLua([[LocalPlayer():EmitSound("ut/MomGetTheCamera.wav")]])
+			end
+			
 			
 		end
 	end
