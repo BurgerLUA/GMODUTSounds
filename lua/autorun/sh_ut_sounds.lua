@@ -1,4 +1,4 @@
-AddCSLuaFile()
+--AddCSLuaFile()
 
 if SERVER then
 
