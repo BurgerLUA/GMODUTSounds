@@ -396,7 +396,7 @@ if CLIENT then
 		--end
 		
 		
-		
+		if not XTAlpha then return end
 
 		local XTColor = Color(0,0,255,XTAlpha)
 		local HTColor = Color(255,0,0,HTAlpha)
